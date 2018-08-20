@@ -37,7 +37,7 @@ extra prameters or package included.
 
 第一行声明了文档类型，又称*类别（class）*。该类别控制了文档的所有外观。不同的文档类型需要使用不同的类别，如，简历使用的类别不同于科学论文。在上述示例中，使用的是 LaTeX 中最简单最常用的 **article** 类别。其它可能用到的类别有 **book** 和 **report**。
 
-其后的文档内容包在 **\begin{document}** 和 **\end{document}** 标签中，这又称为文档 *主体（body）*。如果需要查看在主体里撰写的内容，可以重新编译来生成 PDF。这在 ShareLaTeX 平台中，只需要点击**_重新编译（Recompile）_**按钮。
+其后的文档内容包在 `\begin{document}` 和 `\end{document}` 标签中，这又称为文档 *主体（body）*。如果需要查看在主体里撰写的内容，可以重新编译来生成 PDF。这在 ShareLaTeX 平台中，只需要点击**_重新编译（Recompile）_**按钮。
 
 如果是使用 gedit、emacs、vim、sublime 或记事本等简单文本编辑器来编辑文档，那么需要手动编译。这可以通过运行 **pdflatex < your document>** 命令来完成，更多详细信息可以阅读[该文档](https://en.wikibooks.org/wiki/LaTeX/Basics#Compilation)来获取。
 
@@ -47,7 +47,7 @@ extra prameters or package included.
 
 ## 文档导言
 
-前面的示例中，文本内容位于 **\begin{document}** 命令后，而所有在这个命令前面的成为**导言**。在导言区域，可以定义文档类别、所使用的语言、使用的包以及其它元素。例如，一个普通的文档导言可能如下：
+前面的示例中，文本内容位于 `\begin{document}` 命令后，而所有在这个命令前面的成为**导言**。在导言区域，可以定义文档类别、所使用的语言、使用的包以及其它元素。例如，一个普通的文档导言可能如下：
 
 ```latex
 \documentclass[12pt, letterpaper]{article}
@@ -56,11 +56,11 @@ extra prameters or package included.
 
 下面详细讲述下每行作用：
 
-**\documentclass[12pt, letterpaper]{article}**
+**`\documentclass[12pt, letterpaper]{article}`**
 
-正如前面所述，这定义了文档类型。还可以把在方括号中的以逗号（`,`）分隔的参数传递给该命令，例如，上面的参数指定了字体大小（**12pt**）以及纸张大小（**信纸（letterpaper）**）。当然，还可以使用其它字体大小（**9pt**、**11pt**、**12pt**），但如果没定义，那么默认使用 **10pt**。至于纸张大小，其它可用值有 **a4paper** 和 **legalpaper**，阅读[纸张大小和边距](page_size_and_margins)来获取更多信息。
+正如前面所述，这定义了文档类型。还可以把在方括号中的以逗号（`,`）分隔的参数传递给该命令，例如，上面的参数指定了字体大小（`12pt`）以及纸张大小（**信纸（letterpaper）**）。当然，还可以使用其它字体大小（**9pt**、**11pt**、**12pt**），但如果没定义，那么默认使用 **10pt**。至于纸张大小，其它可用值有 `a4paper` 和 `legalpaper`，阅读[纸张大小和边距](page_size_and_margins)来获取更多信息。
 
-**\usepackage[utf8]{inputenc}**
+**`\usepackage[utf8]{inputenc`}**
 
 这行定义了文档编码。虽然可以不填或者设置为别的编码，但建议使用 utf-8。如果不需要设置别的编码，或者你对此不确定，那么把上面那行添加到文档中。
 
@@ -68,21 +68,21 @@ extra prameters or package included.
 
 如果需要在文档中添加标题、作者和日期，那么需要在导言区添加下面三行（注意不是主体部分）。
 
-**\title{First document}**
+**`\title{First document}`**
 
 这是标题
 
-**\author{Hubert Farnsworth}**
+**`\author{Hubert Farnsworth}`**
 
 这里添加作者姓名，同时，可以选择性地添加下面的命令作为该命令的参数。
 
-**\thanks{fumed by ShareLaTeX team}**
+**`\thanks{fumed by ShareLaTeX team}`**
 
-这个命令可以添加到作者名称后面或者 **title** 命令的大括号内容里面。它会添加一个上标并且会把大括号里的内容作为脚注。这可用于添加感谢内容。
+这个命令可以添加到作者名称后面或者 `title` 命令的大括号内容里面。它会添加一个上标并且会把大括号里的内容作为脚注。这可用于添加感谢内容。
 
-**\date{Feburary 2004}**
+**`\date{Feburary 2004}`**
 
-可以手动输入指定的日期或者使用 **\today** 命令来在每次编译时生成当前的时间。
+可以手动输入指定的日期或者使用 `\today` 命令来在每次编译时生成当前的时间。
 
 添加了这三行后，导言区看起来是这样
 
@@ -95,7 +95,7 @@ extra prameters or package included.
 \date{February 2017}
 ```
 
-现在给文档添加了标题、作者和日期，下一步通过 **maketitle** 来把这些信息展示在文档中。这个命令需要添加在文档主体中需要展示标题的地方。
+现在给文档添加了标题、作者和日期，下一步通过 `maketitle` 来把这些信息展示在文档中。这个命令需要添加在文档主体中需要展示标题的地方。
 
 ```latex
 \begin{document}
@@ -113,3 +113,66 @@ We have now added a title, author and date to our first \LaTeX{} document!
 
 ## 添加注释
 
+注释是指不会打印出来也不会对文档产生任何影响的文本，可用来组织结构、添加备忘或者在调试时注释掉某些行或块。添加注释很简单，只需要在行迁添加 `%` 符号即可，如下：
+
+```latex
+\begin{document}
+
+\maketitle
+
+We have now added a title, author and date to our first \LaTeX{} document!
+
+% This line here is a comment. It will not be printed in the document.
+
+\end{document}
+```
+
+![Learnlatex1.PNG](https://cdn.sharelatex.com/learn-scripts/images/e/e9/Learnlatex1.PNG)
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a308db13712fef4e9deff7/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_3&compiler=pdflatex)
+
+## 粗体、斜体和下划线
+
+现在来看几个简单的文本格式化命令：
+
+- **粗体**：`\textbf{...}`
+- *斜体*：`\textit{...}`
+- <u>下划线</u>：`\underline{...}`
+
+示例如下：
+
+```latex
+Some of the \textbf{greatest} discoveries in \underline{science} were made by \textbf{\textit{accident}}.
+```
+
+![Biu1.png](https://cdn.sharelatex.com/learn-scripts/images/a/a9/Biu1.png)
+
+另外一个很有用的命令是 `\emph{...}`。`\emph` 命令的效果由其所在的上下文来决定，如果是在普通文本中，那么输出斜体，如果在斜体中，那么输出普通文本。
+
+```latex
+Some of the greatest \emph{discoveries}
+in science
+were made by accient.
+
+\textit{Some of the greatest
+\emph{discoveries}
+in sciense
+were made by accident.}
+
+\textbf{Some of the greatest
+\emph{discoveries}
+in science
+were made by accident.}
+```
+
+![Biu5.png](https://cdn.sharelatex.com/learn-scripts/images/5/5d/Biu5.png)
+
+另外，像 [Beamer](beamer) 之类的包可以改变 `\emph` 命令的行为。
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30a6813712fef4e9df06b/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_4&compiler=pdflatex)
+
+## 添加图片
+
+
+
+li
