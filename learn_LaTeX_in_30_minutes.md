@@ -173,6 +173,67 @@ were made by accident.}
 
 ## 添加图片
 
+现在来看看如果给 LaTeX 添加图片。如果是在 ShareLaTeX 平台，那么需要先[上传图片](including_images_in_ShareLaTeX)。
 
+下面展示如何添加图片。
 
-li
+```latex
+\documentclass{article}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+ 
+\begin{document}
+The universe is immense and it seems to be homogeneous, 
+in a large scale, everywhere we look at.
+ 
+\includegraphics{universe}
+ 
+There's a picture of a galaxy above
+\end{document}
+```
+
+![InsertingImagesEx1.png](https://cdn.sharelatex.com/learn-scripts/images/9/9d/InsertingImagesEx1.png)
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30b7413712fef4e9df0a8/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_5&compiler=pdflatex)
+
+LaTeX 本身并不能处理图片，所以需要使用别的包。包能改变 LaTeX 文档的外观或者添加更多的功能。在本例中需要使用 `graphicx` 包来添加图片到文档中。在导言区使用 `usepackage{graphicx}` 来使用该包，引入后提供了 `\includegraphics{...}` 和 `\graphicspath{...}` 命令。
+
+`graphicspath{ {images/} }` 告诉 LaTeX 在当前目录的 *images* 文件夹里查找图片。
+
+`includegraphics{universe}` 则是具体添加图片的命令，其中 *universe* 是不含扩展名的图片名称，即可表示 *universe.PNG*。其中，图片的文件名不应包含空白符或多个点号（`.`）。
+
+提示：*虽然可以添加扩展名，但不建议这么做。如果忽略扩展名，LaTeX 会自动寻找所有支持的格式，详见生成[高分辨率和低分辨率图片](#Generating_high-res_and_low-res_images)*。
+
+### 标题、标签和引用
+
+通过 `figure` 环境来给图片添加标题、标签或引用图片，如：
+
+```latex
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25\textwidth]{mesh}
+    \caption{a nice plot}
+    \label{fig:mesh1}
+\end{figure}
+ 
+As you can see in the figure \ref{fig:mesh1}, the 
+function grows near 0. Also, in the page \pageref{fig:mesh1} 
+is the same example.
+```
+
+![InsertingImages.PNG](https://cdn.sharelatex.com/learn-scripts/images/2/25/InsertingImages.PNG)
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30c5613712fef4e9df0e8/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_6&compiler=pdflatex)
+
+上面用到了三个重要的命令：
+
+- `\caption{a nice plot}`：会如你所料的那样给图片添加一个标题，其和 `includegraphics` 的位置决定了标题在图片的上方还是下方。
+- `\label{fig:mesh1}`：给图片添加标签，同时进行编号，配合下面的命令，可以在文档别的位置引用该图片。
+- `\ref{fig:mesh1}`：会被替换成具体的被引用的图片的编号。
+
+在使用图片时，建议总是放在 `figure` 或其它类似的环境中，这样可以让 LaTeX 自动把图片以及其它内容做合适的排版。
+
+注意：*如果是在自己及其上使用了标题以及引用，那么需要编译两次才会生效。ShareLaTeX 上只需要点击一次「重新编译」。*
+
+## 在 LaTeX 中创建列表
+
