@@ -237,3 +237,115 @@ is the same example.
 
 ## 在 LaTeX 中创建列表
 
+LaTeX 中只需要使用列表*环境*即可轻松创建列表。环境是指 LaTeX 中和其它文档展示可以有所不同的部分，使用 `\begin{...}` 和 `\end{...}` 命令来包裹。
+
+有有序列表和无序列表两种，各自有各自的环境。
+
+### 无序列表
+
+使用 `itemize` 环境来创建无序列表，列表中的每项使用 `\item` 前缀来声明。
+
+```latex
+\begin{itemize}
+  \item The individual entries are indicated with a black dot, a so-called bullet.
+  \item The text in the entries may be of any length.
+\end{itemize}
+```
+
+![Itemize.png](https://cdn.sharelatex.com/learn-scripts/images/e/ea/Itemize.png)
+
+列表中的每项默认使用子弹（bullet）来指示，每项的内容可以任意长。
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/52fe74766a6237452e000088/download/zip&templateName=Lists-Examples&compiler=pdflatex)
+
+### 有序列表
+
+有序列表内部使用同样的语法，除了使用 `enumerate` 环境来声明有序列表。
+
+```latex
+\begin{enumerate}
+  \item This is the first entry in our list
+  \item The list numbers increase with each entry we add
+\end{enumerate}
+```
+
+![Enumerate.png](https://cdn.sharelatex.com/learn-scripts/images/3/3a/Enumerate.png)
+
+和无序列表一样，每项必须前置 `\item` 来声明，这样就会生成从 1 开始的自增数字序列。
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/52fe74766a6237452e000088/download/zip&templateName=Lists-Examples&compiler=pdflatex)
+
+## 添加数学公式
+
+LaTeX 的一个主要优点是书写数学公式变得很简单。LaTeX 中的数学公式有两种书写模式，行内模式（**inline mode**）和行间模式（**display mode**）。前者是和其它文本放在一起，后者是独立成行。下面展示一个行内模式示例：
+
+```latex
+In physics, the mass-energy equivalence is stated 
+by the equation $E=mc^2$, discovered in 1905 by Albert Einstein.
+```
+
+![Einstein1.png](https://cdn.sharelatex.com/learn-scripts/images/d/db/Einstein1.png)
+
+行内模式公式可以根据习惯使用 `\( ... \)`、`$ ... $` 和 `\begin{math} ... \end{math}` 任一分隔符来插入即可。
+
+而*行间模式*有两个版本，编号公式和不编号公式。
+
+```latex
+The mass-energy equivalence is described by the famous equation
+ 
+$$E=mc^2$$
+ 
+discovered in 1905 by Albert Einstein. 
+In natural units ($c = 1$), the formula expresses the identity
+ 
+\begin{equation}
+E=m
+\end{equation}
+```
+
+![Einstein2.png](https://cdn.sharelatex.com/learn-scripts/images/3/3a/Einstein2.png)
+
+行间模式可以使用后面其中一个分隔符来来声明：`\[ ... \]`、`$$ ... $$`、`\begin{displaymath} ... \end{displaymath}` 以及 `\begin{equation} ... \end{equation}`。
+
+重点提示：*equation 环境是由 amsmath 包提供的，请参考 [amsmath 文档](aligning_equations)。*
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/52ec4e44b43917a25a000e96/download/zip&templateName=MathExpressions&compiler=pdflatex)
+
+很多数学模式的命令依赖于 **amsmath** 包，书写公式时确保引用这个包。下面这个例子展示了一些基础的数学模式命令。
+
+```latex
+Subscripts in math mode are written as $a_b$ and superscripts are written as $a^b$. These can be combined an nested to write expressions such as
+ 
+$$T^{i_1 i_2 \dots i_p}_{j_1 j_2 \dots j_q} = T(x^{i_1},\dots,x^{i_p},e_{j_1},\dots,e_{j_q})$$
+ 
+We write integrals using $\int$ and fractions using $\frac{a}{b}$. Limits are placed on integrals using superscripts and subscripts:
+ 
+$$\int_0^1 \frac{1}{e^x} =  \frac{e-1}{e}$$
+ 
+Lower case Greek letters are written as $\omega$ $\delta$ etc. while upper case Greek letters are written as $\Omega$ $\Delta$.
+ 
+Mathematical operators are prefixed with a backslash as $\sin(\beta)$, $\cos(\alpha)$, $\log(x)$ etc.
+```
+
+![Math.PNG](https://cdn.sharelatex.com/learn-scripts/images/2/22/Math.PNG)
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30cfd13712fef4e9df123/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_7&compiler=pdflatex)
+
+LaTeX 中数学公式相关的内容很多，无法在这里一一列举，可以参考以下文章：
+
+- [数学公式](mathematical_expressions)
+- [上标和下标](subscripts_and_superscripts)
+- [括号和参数](brackets_and_Parentheses)
+- [分数和二项式](fractions_and_Binomials)
+- [公式对齐](aligning_equations)
+- [运算符](operators)
+- [数学模式中的空白](spacing_in_math_mode)
+- [积分、求和以及极限](integrals_sums_and_limits)
+- [数学模式中的样式](display_style_in_math_mode)
+- [希腊字母和数学符号](list_of_Greek_letters_and_math_symbols)
+- [数学字体](mathematical_fonts)
+
+## 基本格式
+
+
+
