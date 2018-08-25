@@ -430,7 +430,6 @@ Etiam lobortis facilisissem
 用 `\section{}` 命令来声明新节，大括号内的内容作为其标题。节会被自动编号，如果不需要编号则使用 `\section*{}`。还可以用 `\subsection{}`、`\subsubsection{}` 来声明子节和小节。基本的层级如下：
 
 | -1   | `\part{part}`                   |
-| ---- | ------------------------------- |
 | 0    | `\chapter{chaper}`              |
 | 1    | `\section{section}`             |
 | 2    | `\subsection{subsection}`       |
