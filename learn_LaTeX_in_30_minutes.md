@@ -12,7 +12,7 @@ LaTeX（发音：*LAY-tek* 或 *LAH-tek*）是一个用来创建具有专业感�
 
 ## 为什么学习 LaTeX
 
-全世界的科学文档、书籍以及其它的出版物都广泛地使用 LaTeX 来出版，这不仅仅是因为它可以创建优秀排版文档，还让用户轻松地处理如输入数学公式、创建目录、引用文献和创建书目以及章节间的一致布局等复杂排版。因为有着大量的开源包（后续会做介绍），LaTeX 有着无限可能，如添加脚注、绘制原理图以及创建表格。
+全世界的科学文献、书籍以及其它的出版物都广泛地使用 LaTeX 来出版，这不仅仅是因为它可以创建优秀排版文档，还让用户轻松地处理如输入数学公式、创建目录、引用文献和创建书目以及章节间的一致布局等复杂排版。因为有着大量的开源包（后续会做介绍），LaTeX 有着无限可能，如添加脚注、绘制原理图以及创建表格。
 
 其中，最重要的原因是，把文档内容和展示格式分离，这意味着可以轻易地更换文档的外观。同时，可以把一份格式应用到多个文档上，科学期刊据此来创建投稿模版。事实上，有着大量的[模版](templates)，从普通的建立到站使用的幻灯片都有。
 
@@ -346,6 +346,103 @@ LaTeX 中数学公式相关的内容很多，无法在这里一一列举，可�
 - [数学字体](mathematical_fonts)
 
 ## 基本格式
+
+现在来看下如何撰写摘要、章节以及段落。
+
+### 摘要
+
+科学文献中，一般都会包含文章主题的简要概述。在 LaTeX 中，用 `abstract` 环境来处理这部分内容，用特殊的样式来处理，并放到文档开头。
+
+```latex
+\begin{document}
+ 
+\begin{abstract}
+This is a simple paragraph at the beginning of the 
+document. A brief introduction about the main subject.
+\end{abstract}
+\end{document}
+```
+
+![Abstractsmall.PNG](https://cdn.sharelatex.com/learn-scripts/images/d/db/Abstractsmall.PNG)
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30dd713712fef4e9df14e/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_8&compiler=pdflatex)
+
+### 段落和换行
+
+```latex
+\begin{document}
+ 
+\begin{abstract}
+This is a simple paragraph at the beginning of the 
+document. A brief introduction about the main subject.
+\end{abstract}
+ 
+Now that we have written our abstract, we can begin writing our first paragraph.
+ 
+This line will start a second Paragraph.
+\end{document}
+```
+
+![Abstractnonewline.PNG](https://cdn.sharelatex.com/learn-scripts/images/d/d3/Abstractnonewline.PNG)
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30dd713712fef4e9df14e/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_8&compiler=pdflatex)
+
+撰写文章时，如果需要起一个新段落，那么必须按两次回车键（插入一个双空行）。可以看到，LaTeX 会自动做段落缩进。
+
+如果需要新起一行而不是被当作新段落来处理，那么可以通过添加 `\\` 或 `\newline` 命令来完成。
+
+阅读[段落和换行](paragraphs_and_new_lines)来或取更多信息。
+
+### 章节
+
+组织文档的命令根据文档类而不同，最简单的组织形式是在所有格式中都通用的章节。
+
+```latex
+\chapter{First Chapter}
+ 
+\section{Introduction}
+ 
+This is the first section.
+ 
+Lorem  ipsum  dolor  sit  amet,  consectetuer  adipiscing  
+elit.   Etiam  lobortisfacilisis sem.  Nullam nec mi et 
+neque pharetra sollicitudin.  Praesent imperdietmi nec ante. 
+Donec ullamcorper, felis non sodales...
+ 
+\section{Second Section}
+ 
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+ 
+\subsection{First Subsection}
+Praesent imperdietmi nec ante. Donec ullamcorper, felis non sodales...
+ 
+\section*{Unnumbered Section}
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem
+```
+
+![Sections1.PNG](https://cdn.sharelatex.com/learn-scripts/images/7/7c/Sections1.PNG)
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a30e7b13712fef4e9df182/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_9&compiler=pdflatex)
+
+用 `\section{}` 命令来声明新节，大括号内的内容作为其标题。节会被自动编号，如果不需要编号则使用 `\section*{}`。还可以用 `\subsection{}`、`\subsubsection{}` 来声明子节和小节。基本的层级如下：
+
+| -1   | `\part{part}`                   |
+| ---- | ------------------------------- |
+| 0    | `\chapter{chaper}`              |
+| 1    | `\section{section}`             |
+| 2    | `\subsection{subsection}`       |
+| 3    | `\subsubsection{subsubsection}` |
+| 4    | `\paragraph{paragraph}`         |
+| 5    | `\subparagraph{subparagraph}`   |
+
+注意 `\part` 和 `\chapter` 只在 *report* 和 *book* 文档类中可用。
+
+关于文档结构完整的讲述可以参考[关于章节的文章](sections_and_chapters)。
+
+## 添加表格
 
 
 
