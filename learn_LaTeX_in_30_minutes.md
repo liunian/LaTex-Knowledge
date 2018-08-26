@@ -233,7 +233,7 @@ is the same example.
 
 在使用图片时，建议总是放在 `figure` 或其它类似的环境中，这样可以让 LaTeX 自动把图片以及其它内容做合适的排版。
 
-注意：*如果是在自己及其上使用了标题以及引用，那么需要编译两次才会生效。ShareLaTeX 上只需要点击一次「重新编译」。*
+注意：*如果是在自己机器上使用了标题以及引用，那么需要编译两次才会生效。ShareLaTeX 上只需要点击一次「重新编译」。*
 
 ## 在 LaTeX 中创建列表
 
@@ -443,5 +443,156 @@ Etiam lobortis facilisissem
 
 ## 添加表格
 
+### 在 LaTeX 中创建一个简单的表格
 
+下面是一个最简单的表格
+
+```latex
+\begin{center}
+\begin{tabular}{ c c c }
+ cell1 & cell2 & cell3 \\ 
+ cell4 & cell5 & cell6 \\  
+ cell7 & cell8 & cell9    
+\end{tabular}
+\end{center}
+```
+
+![TablesEx1.png](https://cdn.sharelatex.com/learn-scripts/images/c/c2/TablesEx1.png)
+
+`tabular` 环境是 LaTeX 创建表格的默认方法。必须给这个环境传递一个参数，这个例子中是 `{c c c}`，表示这个表格有三列，每列中的位子都是居中对齐。也可以使用 `r` 来右对齐，`l` 来左对齐。对齐符号 `&` 用来表示单元格分隔，数量比列数量少 1。表格的下一行用新行命令 `\\` 来表示。而 `center` 环境表示表格本身在页面中居中。
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a3101d13712fef4e9df258/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_10&compiler=pdflatex)
+
+### 添加边框
+
+`tabular` 环境很灵活，可以添加列边框。
+
+```latex
+\begin{center}
+\begin{tabular}{ |c|c|c| } 
+ \hline
+ cell1 & cell2 & cell3 \\ 
+ cell4 & cell5 & cell6 \\ 
+ cell7 & cell8 & cell9 \\ 
+ \hline
+\end{tabular}
+\end{center}
+```
+
+使用 `\hline` 添加横线，`|` 参数来添加竖线。
+
+- `{ |c|c|c| }`：表示表格有三列，每列左右的 `|` 符号表示用竖线分隔。
+- `\hline`：表示横线，这里是在表格的头部和底部添加了横线。横线没有使用次数限制。
+
+下面是一个双横线的例子
+
+```latex
+begin{center}
+ \begin{tabular}{||c c c c||} 
+ \hline
+ Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+ \hline\hline
+ 1 & 6 & 87837 & 787 \\ 
+ \hline
+ 2 & 7 & 78 & 5415 \\
+ \hline
+ 3 & 545 & 778 & 7507 \\
+ \hline
+ 4 & 545 & 18744 & 7560 \\
+ \hline
+ 5 & 88 & 788 & 6344 \\ [1ex] 
+ \hline
+\end{tabular}
+\end{center}
+```
+
+![TablesEx3.png](https://cdn.sharelatex.com/learn-scripts/images/2/2c/TablesEx3.png)
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a3101d13712fef4e9df258/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_10&compiler=pdflatex)
+
+### 标题、标签与引用
+
+和图片一样，也可以给表格添加标题和引用，区别在于使用 `table` 环境而不是 `figure` 环境。
+
+```latex
+Table \ref{table:data} is an example of referenced \LaTeX{} elements.
+ 
+\begin{table}[h!]
+\centering
+\begin{tabular}{||c c c c||} 
+ \hline
+ Col1 & Col2 & Col2 & Col3 \\ [0.5ex] 
+ \hline\hline
+ 1 & 6 & 87837 & 787 \\ 
+ 2 & 7 & 78 & 5415 \\
+ 3 & 545 & 778 & 7507 \\
+ 4 & 545 & 18744 & 7560 \\
+ 5 & 88 & 788 & 6344 \\ [1ex] 
+ \hline
+\end{tabular}
+\caption{Table to test captions and labels}
+\label{table:data}
+\end{table}
+```
+
+![Ourtablelabel.PNG](https://cdn.sharelatex.com/learn-scripts/images/2/26/Ourtablelabel.PNG)
+
+[在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a3101d13712fef4e9df258/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_10&compiler=pdflatex)
+
+注意：*如果是在自己机器上使用了标题以及引用，那么需要编译两次才会生效。ShareLaTeX 上只需要点击一次「重新编译」。*
+
+## 添加目录
+
+创建目录很简单，只需要使用 `\tableofcontents` 即可。
+
+```latex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+ 
+\title{Sections and Chapters}
+\author{Gubert Farnsworth}
+\date{ }
+ 
+\begin{document}
+ 
+\maketitle
+ 
+\tableofcontents
+ 
+\section{Introduction}
+ 
+This is the first section.
+ 
+Lorem  ipsum  dolor  sit  amet,  consectetuer  adipiscing  
+elit.   Etiam  lobortisfacilisis sem.  Nullam nec mi et 
+neque pharetra sollicitudin.  Praesent imperdietmi nec ante. 
+Donec ullamcorper, felis non sodales...
+ 
+\addcontentsline{toc}{section}{Unnumbered Section}
+\section*{Unnumbered Section}
+ 
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+ 
+\section{Second Section}
+ 
+Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
+Etiam lobortis facilisissem.  Nullam nec mi et neque pharetra 
+sollicitudin.  Praesent imperdiet mi necante...
+ 
+\end{document}
+```
+
+![TableOfContentsEx1.png](https://cdn.sharelatex.com/learn-scripts/images/6/6d/TableOfContentsEx1.png)
+
+章、节和子节都会自动在目录中生成。如果需要手动添加一个条目，可以使用示例中的 `addcontentsline` 命令。
+
+[在 ShareLaTeX 上打开示例]([在 ShareLaTeX 上打开示例](https://www.sharelatex.com/project/new/template?zipUrl=/project/58a3101d13712fef4e9df258/download/zip&templateName=Learn_LaTeX_in_30_minutes:_Part_10&compiler=pdflatex))
+
+## 下载完成的文档
+
+（在 ShareLaTeX 上），可以点击页面左边的菜单栏的 *PDF* 来下载。也可以点击右侧 PDF 预览界面的 *下载 PDF* 按钮来快速下载，如下所示：
+
+![Downloadpdf.PNG](https://cdn.sharelatex.com/learn-scripts/images/6/6c/Downloadpdf.PNG)
 
